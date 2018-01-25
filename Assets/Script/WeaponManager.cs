@@ -64,6 +64,7 @@ public class WeaponManager : MonoBehaviour
     {
         GameObject.FindWithTag("Player").GetComponent<Player>().enabled = true;
         startButtonSwtitch.SetActive(false);
+        print("start werkt");
     }
     public void QuitButton()
     {

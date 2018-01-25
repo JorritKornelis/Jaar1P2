@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 	void Start ()
     {
         victorySwitch.SetActive(false);
-        restart.SetActive(false);
+        //restart.SetActive(false);
 	}
 	
 	// Update is called once per frame
