@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int enemyHealt;
+    public float enemyHealt;
     
 	// Use this for initialization
 	void Start ()
@@ -18,11 +18,10 @@ public class EnemyHealth : MonoBehaviour
         GameObject obj = transform.gameObject;
 		if (enemyHealt <= 0)
         {
-            //transform.gameObject.GetComponent<Manager>().Delete(obj, 2);
             Destroy(gameObject);
         }
 	}
-    public void Healt(int dmg)
+    public void Healt(float dmg)
     {
         enemyHealt -= dmg;
     }
