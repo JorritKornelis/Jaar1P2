@@ -19,6 +19,8 @@ public class Weapon : MonoBehaviour
     public GameObject shot;
     public Text t;
     public Text mayShoot;
+    public Text mayReload;
+    public GameObject reloadSwitch;
     
     // Use this for initialization
 	void Start ()
@@ -26,7 +28,7 @@ public class Weapon : MonoBehaviour
         maxAmmo = curretAmmo;
         manager = GameObject.FindWithTag("Manager").GetComponent<WeaponManager>();
         reload = false;
-        
+        reloadSwitch.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,11 +36,11 @@ public class Weapon : MonoBehaviour
     {
         if (mayFire == false)
         {
-            fireTime -= Time.deltaTime;
-            if (fireTime < 1)
+            fireTime += Time.deltaTime;
+            if (fireTime > 2)
             {
                 mayFire = true;
-                fireTime = 3;
+                fireTime = 0;
             }
         }
         
@@ -47,11 +49,15 @@ public class Weapon : MonoBehaviour
         {
             reload = true;
             reloadTime -= Time.deltaTime;
-            if (reloadTime <= 0)
+            mayReload.text = "Reload:" + reloadTime.ToString();
+            reloadSwitch.SetActive(true);
+
+            if (reloadTime <= 4)
             {
-                reload = false;
                 reloadTime = 4;
                 curretAmmo += 10;
+                mayReload.text = "Reload:" + reloadTime.ToString();
+                reload = false;
             }
            
         }
@@ -67,11 +73,12 @@ public class Weapon : MonoBehaviour
                     {
                         curretAmmo -= 1;
                         t.text = "Ammo:" + curretAmmo.ToString();
-                        GameObject fireWeapon = Instantiate(shot, Vector3.forward, Quaternion.identity);
+                        GameObject fireWeapon = Instantiate(shot, transform.position, Quaternion.identity);
                         manager.Delete(fireWeapon, 1);
-
                         mayFire = false;
-                        if (Physics.Raycast(transform.position, transform.forward, out hit, 100))
+                        reloadSwitch.SetActive(false);
+
+                        if (Physics.Raycast(transform.position, transform.forward, out hit, 15))
                         {
                             if (hit.transform.tag == "Enemy")
                             {

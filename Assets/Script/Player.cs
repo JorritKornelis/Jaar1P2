@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 	void Start ()
     {
         victorySwitch.SetActive(false);
-        //restart.SetActive(false);
+        restart.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -38,7 +38,8 @@ public class Player : MonoBehaviour
         if (playerHealth < 1)
         {
             print("Gameover");
-            //restart.enabled = true;
+            gameObject.GetComponent<Player>().enabled = false;
+            restart.SetActive(true);
         }
         if (transform.position.z > end1.transform.position.z)
         {
@@ -56,5 +57,8 @@ public class Player : MonoBehaviour
             }
         }
     }
-       
+    public void RestartButton()
+    {
+        
+    }
 }

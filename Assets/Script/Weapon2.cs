@@ -30,7 +30,7 @@ public class Weapon2 : MonoBehaviour
             //hitanimation
             
             
-            if (Physics.Raycast(transform.position, transform.forward, out hit2, 100))
+            if (Physics.Raycast(transform.position, transform.forward, out hit2, 5))
             {
                 if (hit2.transform.tag == "Enemy")
                 {
