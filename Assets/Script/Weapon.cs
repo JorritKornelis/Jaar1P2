@@ -71,6 +71,7 @@ public class Weapon : MonoBehaviour
                 {
                     if (mayFire == true)
                     {
+                        
                         curretAmmo -= 1;
                         t.text = "Ammo:" + curretAmmo.ToString();
                         GameObject fireWeapon = Instantiate(shot, transform.position, Quaternion.identity);
@@ -98,7 +99,11 @@ public class Weapon : MonoBehaviour
         
         Debug.DrawRay(transform.position, transform.forward * 5, Color.cyan);
         GameObject.FindWithTag("Manager").GetComponent<WeaponManager>();
-        
+        /*if (GameObject.FindWithTag("Player").GetComponent<Player>().restart == true)
+        {
+            print("ReReload");
+            curretAmmo = maxAmmo;
+        }*/
     }
     
 }

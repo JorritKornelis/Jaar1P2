@@ -9,17 +9,18 @@ public class EnemySpawner : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        GameObject enemy =Instantiate(enemyHolder, transform.localPosition, Quaternion.identity);
-        for(int i = 0;i < numberOfEnemy; i++)
+        GameObject enemy = Instantiate(enemyHolder, transform.localPosition, Quaternion.identity);
+
+        for (int i = 0; i < numberOfEnemy; i++)
         {
             Instantiate(enemy);
         }
-        
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+        
+    }
+
 }

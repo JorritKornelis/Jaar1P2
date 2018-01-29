@@ -9,16 +9,22 @@ public class Player : MonoBehaviour
     public Vector3 cameraRotate;
     public float moveSpeed;
     public int playerHealth;
+    public int playerMaxhealth;
     public Text health;
-    public GameObject restart;
     public GameObject end1;
     public GameObject end2;
     public GameObject victorySwitch;
+    public GameObject gameoverSwitch;
+    public Button restartButton;
+    public GameObject restart;
+    public Vector3 startPosition;
 
 	// Use this for initialization
 	void Start ()
     {
+        restartButton.onClick.AddListener(RestartButton);
         victorySwitch.SetActive(false);
+        gameoverSwitch.SetActive(false);
         restart.SetActive(false);
 	}
 	
@@ -38,9 +44,12 @@ public class Player : MonoBehaviour
         if (playerHealth < 1)
         {
             print("Gameover");
+            gameoverSwitch.SetActive(true);
             gameObject.GetComponent<Player>().enabled = false;
             restart.SetActive(true);
         }
+        
+        //Victory
         if (transform.position.z > end1.transform.position.z)
         {
             if (transform.position.z < end2.transform.position.z)
@@ -52,6 +61,8 @@ public class Player : MonoBehaviour
                         print("Victory");
                         victorySwitch.SetActive(true);
                         restart.SetActive(true);
+                        gameObject.GetComponent<Player>().enabled = false;
+                        
                     }
                 }
             }
@@ -59,6 +70,18 @@ public class Player : MonoBehaviour
     }
     public void RestartButton()
     {
+        print("restart werkt");
+        transform.position = startPosition;
+        restart.SetActive(false);
+        victorySwitch.SetActive(false);
+        gameoverSwitch.SetActive(false);
+        GameObject.FindWithTag("Manager").GetComponent<WeaponManager>().startButtonSwtitch.SetActive(true);
+        GameObject.FindWithTag("Manager").GetComponent<WeaponManager>().quitButtonSwitch.SetActive(true);
+        if (playerHealth <= playerMaxhealth)
+        {
+            playerHealth = playerMaxhealth;
+        }
         
+
     }
 }
