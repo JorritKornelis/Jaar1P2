@@ -21,7 +21,8 @@ public class Weapon : MonoBehaviour
     public Text mayShoot;
     public Text mayReload;
     public GameObject reloadSwitch;
-    
+   
+
     // Use this for initialization
 	void Start ()
     {
