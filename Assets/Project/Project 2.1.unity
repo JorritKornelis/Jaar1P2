@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: eb57cd1faced2434db283b8961290b12,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -530,7 +531,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: -41
+    m_Top: -61
     m_Bottom: 41
   m_ChildAlignment: 0
   m_Spacing: 0
@@ -684,7 +685,7 @@ Transform:
   m_LocalScale: {x: 3.55488, y: 1.7778002, z: 2.239419}
   m_Children: []
   m_Father: {fileID: 1183669194}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &65942043
 MonoBehaviour:
@@ -707,7 +708,8 @@ AudioSource:
   m_GameObject: {fileID: 65942041}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243690222665136616, guid: 048ec65fd67237c46a3b79f520f041de,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: b74b278a99283084382bdd8bb4c9aeb7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1308,6 +1310,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4110694713425300, guid: 9b385212d2d1949468aa0bb92962bf80,
     type: 2}
   m_PrefabInternal: {fileID: 1207054619}
+--- !u!1 &259608213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 259608216}
+  - component: {fileID: 259608214}
+  m_Layer: 0
+  m_Name: ShotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &259608214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 259608213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a29798605426046ac142c74605ac9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 1009264235745084, guid: fae146878db2549408d467ff4a7a1ce0, type: 2}
+  manager: {fileID: 2032442248}
+--- !u!4 &259608216
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 259608213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.45400047, y: -0.21500003, z: 1.457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1183669194}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &265085812 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4110694713425300, guid: 9b385212d2d1949468aa0bb92962bf80,
@@ -3003,7 +3047,7 @@ AudioSource:
   m_GameObject: {fileID: 778165552}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 048ec65fd67237c46a3b79f520f041de,
+  OutputAudioMixerGroup: {fileID: 243922476698413714, guid: 048ec65fd67237c46a3b79f520f041de,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 910ea4bcdf95fb047bebf086158ced5c, type: 3}
   m_PlayOnAwake: 1
@@ -4730,6 +4774,7 @@ Transform:
   - {fileID: 586425188}
   - {fileID: 115809013}
   - {fileID: 574853895}
+  - {fileID: 259608216}
   - {fileID: 65942042}
   m_Father: {fileID: 1207976873}
   m_RootOrder: 0
@@ -5054,8 +5099,7 @@ MonoBehaviour:
   victorySwitch: {fileID: 242184831}
   gameoverSwitch: {fileID: 1467894076}
   restartButton: {fileID: 666072581}
-  restart: {fileID: 666072579}
-  startPosition: {x: -17, y: 1, z: -1}
+  restartSwitch: {fileID: 666072579}
 --- !u!4 &1214376271 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4110694713425300, guid: 9b385212d2d1949468aa0bb92962bf80,
@@ -7154,7 +7198,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4687565980496350, guid: a572a952573d0004782c65de030a7966, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.539999
+      value: 14.19
       objectReference: {fileID: 0}
     - target: {fileID: 4687565980496350, guid: a572a952573d0004782c65de030a7966, type: 2}
       propertyPath: m_LocalPosition.y

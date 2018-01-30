@@ -17,10 +17,13 @@ public class Sound : MonoBehaviour
     {
         if (GameObject.FindWithTag("MainCamera").GetComponent<Weapon>().enabled == true)
         {
-            if (GameObject.FindWithTag("MainCamera").GetComponent<Weapon>().mayFire == true)
+            if (Input.GetButtonDown("Fire1"))
             {
-                shotSoundPlace.clip = shotSound;
-                shotSoundPlace.Play();
+                if (GameObject.FindWithTag("MainCamera").GetComponent<Weapon>().mayFire == true)
+                {
+                    shotSoundPlace.clip = shotSound;
+                    shotSoundPlace.Play();
+                }
             }
         }
         else

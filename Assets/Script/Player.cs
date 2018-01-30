@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -16,8 +17,7 @@ public class Player : MonoBehaviour
     public GameObject victorySwitch;
     public GameObject gameoverSwitch;
     public Button restartButton;
-    public GameObject restart;
-    public Vector3 startPosition;
+    public GameObject restartSwitch;
 
 	// Use this for initialization
 	void Start ()
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         restartButton.onClick.AddListener(RestartButton);
         victorySwitch.SetActive(false);
         gameoverSwitch.SetActive(false);
-        restart.SetActive(false);
+        restartSwitch.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             print("Gameover");
             gameoverSwitch.SetActive(true);
             gameObject.GetComponent<Player>().enabled = false;
-            restart.SetActive(true);
+            restartSwitch.SetActive(true);
         }
         
         //Victory
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
                     {
                         print("Victory");
                         victorySwitch.SetActive(true);
-                        restart.SetActive(true);
+                        restartSwitch.SetActive(true);
                         gameObject.GetComponent<Player>().enabled = false;
                         
                     }
@@ -70,18 +70,8 @@ public class Player : MonoBehaviour
     }
     public void RestartButton()
     {
-        print("restart werkt");
-        transform.position = startPosition;
-        restart.SetActive(false);
-        victorySwitch.SetActive(false);
-        gameoverSwitch.SetActive(false);
-        GameObject.FindWithTag("Manager").GetComponent<WeaponManager>().startButtonSwtitch.SetActive(true);
-        GameObject.FindWithTag("Manager").GetComponent<WeaponManager>().quitButtonSwitch.SetActive(true);
-        if (playerHealth <= playerMaxhealth)
-        {
-            playerHealth = playerMaxhealth;
-        }
+        SceneManager.LoadScene("Project 2.1");
+        restartSwitch.SetActive(false);
         
-
     }
 }
