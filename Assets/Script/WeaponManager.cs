@@ -21,7 +21,7 @@ public class WeaponManager : MonoBehaviour
 
         weapon.SetActive(true);
         weapon2.SetActive(false);
-        GameObject.FindWithTag("MainCamera").GetComponent<Weapon>().enabled = true;
+        GameObject.FindWithTag("MainCamera").GetComponent<Weapon>().enabled = false;
         GameObject.FindWithTag("MainCamera").GetComponent<Weapon2>().enabled = false;
 
         startButton.onClick.AddListener(StartButton);
@@ -62,6 +62,7 @@ public class WeaponManager : MonoBehaviour
 
     public void StartButton()
     {
+        GameObject.FindWithTag("MainCamera").GetComponent<Weapon>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<Player>().enabled = true;
         startButtonSwtitch.SetActive(false);
         print("start werkt");

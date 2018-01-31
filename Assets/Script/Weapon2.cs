@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Weapon2 : MonoBehaviour
 {
     public RaycastHit hit2;
+    public RaycastHit hit3;
     public int dmg;
     public GameObject inpact;
     public GameObject chargeInpact;
@@ -18,7 +19,7 @@ public class Weapon2 : MonoBehaviour
 	void Start ()
     {
         manager = GameObject.FindWithTag("Manager").GetComponent<WeaponManager>();
-
+        
     }
 	
 	// Update is called once per frame
@@ -27,9 +28,7 @@ public class Weapon2 : MonoBehaviour
         
         if (Input.GetButtonDown("Fire1"))
         {
-            //hitanimation
-            
-            
+                      
             if (Physics.Raycast(transform.position, transform.forward, out hit2, 5))
             {
                 if (hit2.transform.tag == "Enemy")
@@ -55,15 +54,15 @@ public class Weapon2 : MonoBehaviour
         }
         if (Input.GetButtonUp("Fire2") && chargeTime <= maxCharge)
         {
-            chargeTime = 0;
             print("2");
-            if(hit2.transform.tag == "Enemy")
+            if (hit3.transform.tag == "Enemy")
             {
                 print("Hit2");
-                hit2.transform.gameObject.GetComponent<EnemyHealth>().Healt(dmg + 2);
-                GameObject g2 = Instantiate(chargeInpact, hit2.point, Quaternion.identity);
+                hit3.transform.gameObject.GetComponent<EnemyHealth>().Healt(dmg + 5);
+                GameObject g2 = Instantiate(chargeInpact, hit3.point, Quaternion.identity);
                 manager.Delete(g2, 2);
             }
+            chargeTime = 0;
             charge.text = "Charge:" + chargeTime.ToString("F0");
         }
     }
