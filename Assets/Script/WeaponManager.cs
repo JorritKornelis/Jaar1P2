@@ -13,6 +13,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject quitButtonSwitch;
     public Image crossHair;
     public GameObject crossHairSwitch;
+    public GameObject EscapeSwitch;
 	
     // Use this for initialization
 	void Start ()
@@ -27,6 +28,7 @@ public class WeaponManager : MonoBehaviour
         startButton.onClick.AddListener(StartButton);
         quitButton.onClick.AddListener(QuitButton);
         crossHairSwitch.SetActive(false);
+        EscapeSwitch.SetActive(true);
     }
 	
 	// Update is called once per frame
@@ -65,6 +67,7 @@ public class WeaponManager : MonoBehaviour
         GameObject.FindWithTag("MainCamera").GetComponent<Weapon>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<Player>().enabled = true;
         startButtonSwtitch.SetActive(false);
+        EscapeSwitch.SetActive(false);
         print("start werkt");
     }
     public void QuitButton()

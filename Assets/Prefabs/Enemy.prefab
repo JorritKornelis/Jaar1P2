@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4447561281307bb4e833d5899c046787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   moveSpeed: 2
 --- !u!114 &114578680419533556
 MonoBehaviour:
@@ -137,4 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a11a8f929400f646b615e38ef360c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealt: 3
+  enemyHealt: 5
